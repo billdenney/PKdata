@@ -1,2 +1,13 @@
 # PKdata
-Pharmacokinetic data from many sources for 
+
+Pharmacokinetic data for testing software with real and statically
+simulated data.  The target is that this package will cover different
+relevant types of data with multiple examples of each type of data.
+
+Current examples include:
+
+* Hydrocortisone simulated data sets illustrating oral dosing.
+* CP1805 data illustrating multiple routes of dosing with the same
+  compound.
+* TC20160506 (not the real drug name) real data illustrating multiple
+  doses occurring in quick succession.
