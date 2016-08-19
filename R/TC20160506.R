@@ -1,7 +1,9 @@
 #' Pharmacokinetics of TC20160506
 #' 
-#' De-identified data set of concentration-time data for TC20160506.  (Note that
-#' TC20160506 is a de-identified name for the drug.)
+#' De-identified data set of concentration-time data for TC20160506.
+#' (Note that TC20160506 is a de-identified name for the drug.)  When
+#' working with this dataset, be aware that the \code{ANALYTE} named
+#' "Parent" can be converted into "Metabolite".
 #' 
 #' @format A data frame with four variables:
 #' \describe{
@@ -15,19 +17,21 @@
 
 #' Dosing of TC20160506
 #' 
-#' De-identified data set of dosing data for TC20160506.  (Note that TC20160506
-#' is a de-identified name for the drug.)
+#' De-identified data set of dosing data for TC20160506.  (Note that
+#' TC20160506 is a de-identified name for the drug.)
 #' 
 #' @format A data frame with five variables:
 #' \describe{
 #'   \item{\code{ID}}{Subject identifier}
 #'   \item{\code{ANALYTE}}{Analyte being dosed (the drug name)}
-#'   \item{\code{TIME}}{Time since first dose on \code{DAY} 1 (in hours)}
-#'   \item{\code{DOSE}}{Dose of TC20160506 (in ug).  Note that there may be more
-#'     than one dose record per subject.}
+#'   \item{\code{TIME}}{Time since first dose on \code{DAY} 1 (in
+#'     hours)}
+#'   \item{\code{DOSE}}{Dose of TC20160506 (in ug).  Note that there
+#'     may be more than one dose record per subject.}
 #'   \item{\code{ROUTE}}{Route of administration}
 #' }
-#' @seealso \code{\link{TC20160506.conc}}, \code{\link{TC20160506.demog}}
+#' @seealso \code{\link{TC20160506.conc}},
+#'   \code{\link{TC20160506.demog}}
 "TC20160506.dose"
 
 #' Demographics associated with the TC20160506 datasets

@@ -15,8 +15,10 @@
 TC20160506.conc
 }
 \description{
-De-identified data set of concentration-time data for TC20160506.  (Note that
-TC20160506 is a de-identified name for the drug.)
+De-identified data set of concentration-time data for TC20160506.
+(Note that TC20160506 is a de-identified name for the drug.)  When
+working with this dataset, be aware that the \code{ANALYTE} named
+"Parent" can be converted into "Metabolite".
 }
 \seealso{
 \code{\link{TC20160506.dose}}, \code{\link{TC20160506.demog}}

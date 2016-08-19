@@ -8,20 +8,22 @@
 \describe{
   \item{\code{ID}}{Subject identifier}
   \item{\code{ANALYTE}}{Analyte being dosed (the drug name)}
-  \item{\code{TIME}}{Time since first dose on \code{DAY} 1 (in hours)}
-  \item{\code{DOSE}}{Dose of TC20160506 (in ug).  Note that there may be more
-    than one dose record per subject.}
+  \item{\code{TIME}}{Time since first dose on \code{DAY} 1 (in
+    hours)}
+  \item{\code{DOSE}}{Dose of TC20160506 (in ug).  Note that there
+    may be more than one dose record per subject.}
   \item{\code{ROUTE}}{Route of administration}
 }}
 \usage{
 TC20160506.dose
 }
 \description{
-De-identified data set of dosing data for TC20160506.  (Note that TC20160506
-is a de-identified name for the drug.)
+De-identified data set of dosing data for TC20160506.  (Note that
+TC20160506 is a de-identified name for the drug.)
 }
 \seealso{
-\code{\link{TC20160506.conc}}, \code{\link{TC20160506.demog}}
+\code{\link{TC20160506.conc}},
+  \code{\link{TC20160506.demog}}
 }
 \keyword{datasets}
 
