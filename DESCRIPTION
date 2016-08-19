@@ -1,0 +1,27 @@
+Package: PKdata
+Title: Pharmacokinetic Data Sets
+Version: 0.0.0.9000
+Authors@R: c(
+    person("William", "Denney", email="wdenney@humanpredictions.com",
+           role=c("aut", "cre")),
+    person("Tim", "Cacek", role="dtc", email="timc79@centurytel.net",
+           comment="Thanks to Tim Cacek of ContractKinetica for providing anonymized datasets."),
+    person("Sibo", "Jiang", email="sibojan@ufl.edu", role="dtc",
+           comment="Thanks for contributing simulated PK data."))
+Description: Pharmacokinetic data sets (with concentration time series
+    data for drugs) are available for use with other packages.  Some
+    of these data sets are observed data, some are masked data (real
+    data, de-identified and/or transformed), and some are simulated
+    data.
+Depends:
+    R (>= 2.10.0)
+Suggests:
+    devtools,
+    dplyr
+License: GPL-3
+Encoding: UTF-8
+NeedsCompilation: no
+URL: https://github.com/billdenney/PKdata
+BugReports: https://github.com/billdenney/PKdata/issues
+LazyData: true
+RoxygenNote: 5.0.1
