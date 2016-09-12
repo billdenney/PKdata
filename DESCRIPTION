@@ -1,13 +1,14 @@
 Package: PKdata
 Title: Pharmacokinetic Data Sets
-Version: 0.0.0.9000
+Version: 0.0.0.9001
 Authors@R: c(
     person("William", "Denney", email="wdenney@humanpredictions.com",
            role=c("aut", "cre")),
     person("Tim", "Cacek", role="dtc", email="timc79@centurytel.net",
            comment="Thanks to Tim Cacek of ContractKinetica for providing anonymized datasets."),
     person("Sibo", "Jiang", email="sibojan@ufl.edu", role="dtc",
-           comment="Thanks for contributing simulated PK data."))
+           comment="Thanks for contributing simulated PK data."),
+    person("Chanida", "Karnpracha", role="dtc"))
 Description: Pharmacokinetic data sets (with concentration time series
     data for drugs) are available for use with other packages.  Some
     of these data sets are observed data, some are masked data (real
