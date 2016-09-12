@@ -481,21 +481,25 @@ local({
   lipoic.acid.nca <- merge(lipoic.acid.nca, table.locations$table20$data)
   lipoic.acid.nca <- ncaupdate(lipoic.acid.nca)
   
+  
+  xanthohumol.demog <- bind_rows(mutate(xanthohumol.low.demog, ID=paste0("L", ID)),
+                                 mutate(xanthohumol.medium.demog, ID=paste0("M", ID)),
+                                 mutate(xanthohumol.high.demog, ID=paste0("H", ID)))
+  xanthohumol.dose <- bind_rows(mutate(xanthohumol.low.dose, ID=paste0("L", ID)),
+                                mutate(xanthohumol.medium.dose, ID=paste0("M", ID)),
+                                mutate(xanthohumol.high.dose, ID=paste0("H", ID)))
+  xanthohumol.conc <- bind_rows(mutate(xanthohumol.low.conc, ID=paste0("L", ID)),
+                                mutate(xanthohumol.medium.conc, ID=paste0("M", ID)),
+                                mutate(xanthohumol.high.conc, ID=paste0("H", ID)))
+  xanthohumol.nca <- bind_rows(mutate(xanthohumol.low.nca, ID=paste0("L", ID)),
+                               mutate(xanthohumol.medium.nca, ID=paste0("M", ID)),
+                               mutate(xanthohumol.high.nca, ID=paste0("H", ID)))
+
   ## Write out the data
-  devtools::use_data(xanthohumol.low.demog,
-                     xanthohumol.low.dose,
-                     xanthohumol.low.conc,
-                     xanthohumol.low.nca,
-                     
-                     xanthohumol.medium.demog,
-                     xanthohumol.medium.dose,
-                     xanthohumol.medium.conc,
-                     xanthohumol.medium.nca,
-                     
-                     xanthohumol.high.demog,
-                     xanthohumol.high.dose,
-                     xanthohumol.high.conc,
-                     xanthohumol.high.nca,
+  devtools::use_data(xanthohumol.demog,
+                     xanthohumol.dose,
+                     xanthohumol.conc,
+                     xanthohumol.nca,
                      
                      lipoic.acid.demog,
                      lipoic.acid.dose,
