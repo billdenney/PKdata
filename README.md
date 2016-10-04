@@ -13,6 +13,8 @@ Current examples include:
   doses occurring in quick succession.
 * KI20160914 (not the real drug name) adjusted data illustrating single
   dosing.
-* Lipoic acid single-dose real data concentration over time.
+* Lipoic acid single-dose real data concentration over time and its
+  NCA parameters as calculated by Kinetica and WinNonlin.
 * Xanthohumol and its metabolite isoxanthohumol single-dose real data
-  with complex increases and decreases in concentration over time.
+  with complex increases and decreases in concentration over time and
+  their NCA parameters as calculated by Kinetica and WinNonlin.
