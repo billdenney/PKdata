@@ -11,3 +11,8 @@ Current examples include:
   compound.
 * TC20160506 (not the real drug name) real data illustrating multiple
   doses occurring in quick succession.
+* KI20160914 (not the real drug name) adjusted data illustrating single
+  dosing.
+* Lipoic acid single-dose real data concentration over time.
+* Xanthohumol and its metabolite isoxanthohumol single-dose real data
+  with complex increases and decreases in concentration over time.
