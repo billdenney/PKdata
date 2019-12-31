@@ -16,4 +16,3 @@ xanthohumol.demog
 Demographics for subjects dosed with xanthohumol
 }
 \keyword{datasets}
-

@@ -21,4 +21,3 @@ Simulated data set of dosing data for hydrocortisone.
 \code{\link{hydrocortisone.sim.conc}}
 }
 \keyword{datasets}
-

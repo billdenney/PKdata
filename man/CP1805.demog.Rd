@@ -20,4 +20,3 @@ De-identified data set of demographic data for CP1805 pharmacokinetics.
 \code{\link{CP1805.conc}}, \code{\link{CP1805.dose}}
 }
 \keyword{datasets}
-

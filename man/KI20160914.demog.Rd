@@ -22,4 +22,3 @@ De-identified data set of demographic data for KI20160914 pharmacokinetics.
 \code{\link{KI20160914.conc}}, \code{\link{KI20160914.dose}}
 }
 \keyword{datasets}
-

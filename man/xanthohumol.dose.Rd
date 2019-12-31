@@ -25,4 +25,3 @@ Karnpracha, Chanida. (2013) Comparison of Pharmacokinetic Data Analysis with
 Two Competing Pharmacokinetic Software Program. (Master's Thesis)
 }
 \keyword{datasets}
-

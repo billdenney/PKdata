@@ -25,4 +25,3 @@ De-identified data set of concentration-time data for KI20160914.
 \code{\link{KI20160914.dose}}, \code{\link{KI20160914.demog}}
 }
 \keyword{datasets}
-

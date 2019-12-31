@@ -22,4 +22,3 @@ De-identified data set of concentration-time data for CP1805.
 \code{\link{CP1805.dose}}, \code{\link{CP1805.demog}}
 }
 \keyword{datasets}
-

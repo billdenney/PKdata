@@ -17,7 +17,7 @@ hydrocortisone.sim.conc
 Simulated data set of concentration-time data for hydrocortisone.
 }
 \references{
-Derendorf H, Möllmann H, Barth J, Möllmann C, Tunn S, Krieg M.
+Derendorf H, Mollmann H, Barth J, Mollmann C, Tunn S, Krieg M.
 Pharmacokinetics and oral bioavailability of hydrocortisone. J Clin
 Pharmacol. 1991;31(5):473-6.
 }
@@ -25,4 +25,3 @@ Pharmacol. 1991;31(5):473-6.
 \code{\link{hydrocortisone.sim.dose}}
 }
 \keyword{datasets}
-

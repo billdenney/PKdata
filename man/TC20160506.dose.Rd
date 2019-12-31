@@ -26,4 +26,3 @@ TC20160506 is a de-identified name for the drug.)
   \code{\link{TC20160506.demog}}
 }
 \keyword{datasets}
-

@@ -27,4 +27,3 @@ KI20160914 is a de-identified name for the drug.)
   \code{\link{KI20160914.demog}}
 }
 \keyword{datasets}
-

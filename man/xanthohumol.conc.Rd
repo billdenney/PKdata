@@ -29,5 +29,5 @@ Two Competing Pharmacokinetic Software Program. (Master's Thesis)
 \code{\link{xanthohumol.dose}}, \code{\link{xanthohumol.dose}},
   \code{\link{xanthohumol.nca}}
 }
+\concept{xanthohumol and isoxanthohumol concentration and NCA data}
 \keyword{datasets}
-

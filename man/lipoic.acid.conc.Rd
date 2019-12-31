@@ -30,4 +30,3 @@ Two Competing Pharmacokinetic Software Program. (Master's Thesis)
   \code{\link{lipoic.acid.demog}}
 }
 \keyword{datasets}
-

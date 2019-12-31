@@ -24,4 +24,3 @@ De-identified data set of dosing data for CP1805.
 \code{\link{CP1805.conc}}, \code{\link{CP1805.demog}}
 }
 \keyword{datasets}
-

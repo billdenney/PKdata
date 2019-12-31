@@ -22,4 +22,3 @@ De-identified data set of demographic data for TC20160506 pharmacokinetics.
 \code{\link{TC20160506.conc}}, \code{\link{TC20160506.dose}}
 }
 \keyword{datasets}
-

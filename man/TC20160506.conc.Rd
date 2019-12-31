@@ -24,4 +24,3 @@ working with this dataset, be aware that the \code{ANALYTE} named
 \code{\link{TC20160506.dose}}, \code{\link{TC20160506.demog}}
 }
 \keyword{datasets}
-

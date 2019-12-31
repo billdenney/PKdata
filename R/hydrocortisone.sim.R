@@ -11,7 +11,7 @@
 #' @seealso \code{\link{hydrocortisone.sim.dose}}
 #' 
 #' @references
-#' Derendorf H, Möllmann H, Barth J, Möllmann C, Tunn S, Krieg M.
+#' Derendorf H, Mollmann H, Barth J, Mollmann C, Tunn S, Krieg M.
 #' Pharmacokinetics and oral bioavailability of hydrocortisone. J Clin
 #' Pharmacol. 1991;31(5):473-6.
 "hydrocortisone.sim.conc"
