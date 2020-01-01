@@ -1,49 +1,73 @@
 library(devtools)
-library(dplyr)
+library(tidyverse)
 
 local({
-  d.raw <- read.csv("data-raw/KI20160914.csv",
-                    stringsAsFactors=FALSE,
-                    na.strings=".")
-  d.cleaner <-
-    rename(d.raw[,c("SUBJID", "VIST", "DAY", "TIME", "NTPD", "AMT",
-                    "DV", "FORM", "TRTCD", "SEX", "AGE", "WT")],
-           ID=SUBJID,
-           PERIOD=VIST,
-           TIME.FIRST.DOSE=TIME,
-           TIME=NTPD,
-           DOSE=AMT,
-           CONC=DV,
-           FORMULATION=FORM,
-           WEIGHT=WT)
-  d.cleaner <- mutate(d.cleaner,
-                      SEX=factor(c("F", "M")[SEX + 1]),
-                      FORMULATION=factor(FORMULATION))
+  d_raw <-
+    read.csv(
+      "data-raw/KI20160914.csv",
+      stringsAsFactors=FALSE,
+      na.strings="."
+    )
+  d_cleaner <-
+    d_raw %>%
+    select(
+      ID=SUBJID,
+      PERIOD=VIST,
+      DAY,
+      TIME_FIRST_DOSE=TIME,
+      TIME=NTPD,
+      DOSE=AMT,
+      CONC=DV,
+      FORMULATION=FORM,
+      TRTCD,
+      SEX,
+      AGE,
+      WEIGHT=WT
+    ) %>%
+    mutate(
+      SEX=factor(c("F", "M")[SEX + 1]),
+      FORMULATION=factor(FORMULATION)
+    )
   
-  d.dose <-
-    d.cleaner[!is.na(d.cleaner$DOSE),
-              c("ID", "PERIOD", "DAY", "TIME.FIRST.DOSE", "TIME",
-                "DOSE", "FORMULATION")]
-  d.dose$TIME.FIRST.DOSE <- d.dose$TIME.FIRST.DOSE - 0.001
-  d.dose$TIME <- d.dose$TIME - 0.001
-  d.dose$ROUTE <- "oral"
+  d_dose <-
+    d_cleaner %>%
+    filter(!is.na(d_cleaner$DOSE)) %>%
+    select(
+      "ID", "PERIOD", "DAY", "TIME_FIRST_DOSE", "TIME",
+      "DOSE", "FORMULATION"
+    ) %>%
+    mutate(
+      TIME_FIRST_DOSE=TIME_FIRST_DOSE - 0.001,
+      TIME=TIME - 0.001,
+      TIMEU="hours",
+      ROUTE="oral"
+    )
 
-  d.demog <- unique(d.cleaner[,c("ID", "SEX", "AGE", "WEIGHT")])
+  d_demog <-
+    d_cleaner %>%
+    select("ID", "SEX", "AGE", "WEIGHT") %>%
+    unique() %>%
+    mutate(
+      AGEU="years",
+      WEIGHTU="kg"
+    )
   
-  d.conc <-
-    d.cleaner[!is.na(d.cleaner$CONC),
-              c("ID", "PERIOD", "DAY", "TIME.FIRST.DOSE", "TIME",
-                "CONC", "FORMULATION")]
+  d_conc <-
+    d_cleaner %>%
+    filter(!is.na(d_cleaner$CONC)) %>%
+    select(
+      "ID", "PERIOD", "DAY", "TIME_FIRST_DOSE", "TIME",
+      "CONC", "FORMULATION"
+    )
   
-  KI20160914.conc <- d.conc
-  KI20160914.dose <- d.dose
-  KI20160914.demog <- d.demog
+  KI20160914_conc <- d_conc
+  KI20160914_dose <- d_dose
+  KI20160914_demog <- d_demog
 
-  devtools::use_data(KI20160914.conc,
-                     KI20160914.dose,
-                     KI20160914.demog,
-
-                     pkg=".",
-                     overwrite=TRUE)
-
+  usethis::use_data(
+    KI20160914_conc,
+    KI20160914_dose,
+    KI20160914_demog,
+    overwrite=TRUE
+  )
 })

@@ -1,18 +1,19 @@
 rm(list=ls())
 
-## Source for file (downloaded on 2016-09-12):
-## https://ir.library.oregonstate.edu/xmlui/bitstream/handle/1957/39168/KarnprachaChanida2013.pdf?sequence=1
+# Source for file (downloaded on 2020-01-01):
+# https://ir.library.oregonstate.edu/xmlui/bitstream/handle/1957/39168/KarnprachaChanida2013.pdf
 
-## library(devtools)
-## install.packages("png")
-## install_github("leeper/tabulizerjars")
-## install_github("leeper/tabulizer")
+# library(devtools)
+# install.packages("png")
+# 
+#install.packages("tabulizerjars")
+#install.packages("tabulizer")
 library(tabulizer)
 library(tidyr)
 library(dplyr)
 
 local({
-  table.locations <- list(
+  table_locations <- list(
     table1=list(
       pages=31,
       caption="The Pharmacokinetic parameters from Kinetica software of 20 mg of Xanthohumol"),
@@ -96,11 +97,13 @@ local({
       caption="Concentration (ng/ml) of R- form of Lipoic acid"))
   
   ## Extract the data for each table  
-  for (n in names(table.locations)) {
+  for (n in names(table_locations)) {
     cat("Reading", n, "...\n")
-    table.locations[[n]]$rawdata <-
-      extract_tables(file="data-raw/KarnprachaChanida2013.pdf",
-                     pages=table.locations[[n]]$pages)[[1]]
+    table_locations[[n]]$rawdata <-
+      extract_tables(
+        file="data-raw/KarnprachaChanida2013.pdf",
+        pages=table_locations[[n]]$pages
+      )[[1]]
   }
   
   ##############################
@@ -108,7 +111,7 @@ local({
   
   ## Split a column where two values are separated by a space in the
   ## same data.
-  split.column <- function(x) {
+  split_column <- function(x) {
     ret <- strsplit(x, " ")
     ## If there are any blanks, ensure that the output has blanks as
     ## well.
@@ -128,7 +131,7 @@ local({
       } else {
         ## Extract part of the column making it numeric
         ret[,n] <-
-          as.numeric(split.column(
+          as.numeric(split_column(
             data[,colmap[[n]][1]])[,colmap[[n]][2]])
       }
     }
@@ -177,25 +180,28 @@ local({
   colmap$table11$rows <- 5:21
   
   ## Tables where the data came in as multiple rows
-  for (n in names(colmap))
-    table.locations[[n]]$data <-
-    mapdata(table.locations[[n]]$rawdata[colmap[[n]]$rows,],
-            colmap[[n]]$columns)
+  for (n in names(colmap)) {
+    table_locations[[n]]$data <-
+      mapdata(
+        table_locations[[n]]$rawdata[colmap[[n]]$rows,],
+        colmap[[n]]$columns
+      )
+  }
   
   ## Tables where the data came in a single row
   for (n in c("table2", "table15", "table16", "table17",
               "table18")) {
-    tmp <- strsplit(table.locations[[n]]$rawdata[3,], split=" \r")
+    tmp <- strsplit(table_locations[[n]]$rawdata[3,], split=" \r")
     names(tmp) <- names(colmap$table1$columns)
-    table.locations[[n]]$data <- as.data.frame(tmp)
+    table_locations[[n]]$data <- as.data.frame(tmp)
   }
   
   ## Convert "Sample" to always be numeric
-  for (n in names(table.locations)) {
-    if ("Sample" %in% names(table.locations[[n]]$rawdata)) {
-      if (is.factor(table.locations[[n]]$rawdata$Sample)) {
-        table.locations[[n]]$rawdata$Sample <-
-          as.numeric(as.character(table.locations[[n]]$rawdata$Sample))
+  for (n in names(table_locations)) {
+    if ("Sample" %in% names(table_locations[[n]]$rawdata)) {
+      if (is.factor(table_locations[[n]]$rawdata$Sample)) {
+        table_locations[[n]]$rawdata$Sample <-
+          as.numeric(as.character(table_locations[[n]]$rawdata$Sample))
       }
     }
   }
@@ -213,20 +219,20 @@ local({
         gsub(pattern.num.sex, "\\2", x)))
   }
   
-  table.locations$table21$data <-
+  table_locations$table21$data <-
     rbind(
       cbind(data.frame(dose="Low"),
-            get.num.sex(table.locations$table21$rawdata[,1])),
+            get.num.sex(table_locations$table21$rawdata[,1])),
       cbind(data.frame(dose="Medium"),
-            get.num.sex(table.locations$table21$rawdata[,2])),
+            get.num.sex(table_locations$table21$rawdata[,2])),
       cbind(data.frame(dose="High"),
-            get.num.sex(table.locations$table21$rawdata[,3])))
+            get.num.sex(table_locations$table21$rawdata[,3])))
   
-  table.locations$table22$data <-
+  table_locations$table22$data <-
     data.frame(
-      ID=as.numeric(strsplit(table.locations$table22$rawdata[3,1], split=" \r")[[1]]),
-      Sex=toupper(strsplit(table.locations$table22$rawdata[3,2], split=" \r")[[1]]),
-      Age=factor(strsplit(table.locations$table22$rawdata[3,3], split=" \r")[[1]],
+      ID=as.numeric(strsplit(table_locations$table22$rawdata[3,1], split=" \r")[[1]]),
+      Sex=toupper(strsplit(table_locations$table22$rawdata[3,2], split=" \r")[[1]]),
+      Age=factor(strsplit(table_locations$table22$rawdata[3,3], split=" \r")[[1]],
                  levels=c("y", "e"),
                  labels=c("Young", "Elderly")))
   
@@ -255,79 +261,79 @@ local({
   splitcol <- list(table26=8)
   
   for (n in names(startrow)) {
-    tmp <- table.locations[[n]]$rawdata
+    tmp <- table_locations[[n]]$rawdata
     tmp <- tmp[startrow[[n]]:nrow(tmp),]
     if (n %in% names(splitcol)) {
       tmp <- cbind(tmp[,1:(splitcol[[n]]-1)],
-                   split.column(tmp[,splitcol[[n]]]),
+                   split_column(tmp[,splitcol[[n]]]),
                    tmp[,(splitcol[[n]] + 1):ncol(tmp)])
     }
-    table.locations[[n]]$data <- conc.time.to.long(tmp)
+    table_locations[[n]]$data <- conc.time.to.long(tmp)
   }
   
   ## Clean up tables 13 and 14
-  tmpdata <- table.locations$table13$rawdata
+  tmpdata <- table_locations$table13$rawdata
   data.rows <- list(3:20, 3:15, 3:19)
-  table.locations$table13$data <-
+  table_locations$table13$data <-
     rbind(
       cbind(data.frame(ID=as.numeric(tmpdata[data.rows[[1]],1]),
                        Dose=20),
-            split.column(tmpdata[data.rows[[1]],2])),
+            split_column(tmpdata[data.rows[[1]],2])),
       cbind(data.frame(ID=as.numeric(tmpdata[data.rows[[2]],1]),
                        Dose=60),
-            split.column(tmpdata[data.rows[[2]],3])),
+            split_column(tmpdata[data.rows[[2]],3])),
       cbind(data.frame(ID=as.numeric(tmpdata[data.rows[[3]],1]),
                        Dose=180),
-            split.column(tmpdata[data.rows[[3]],4])))
-  names(table.locations$table13$data) <- c("ID", "Dose", "Kinetica", "WinNonlin")
-  table.locations$table13$data <-
+            split_column(tmpdata[data.rows[[3]],4])))
+  names(table_locations$table13$data) <- c("ID", "Dose", "Kinetica", "WinNonlin")
+  table_locations$table13$data <-
     rbind(
-      mutate(rename(table.locations$table13$data[,c("ID", "Dose", "Kinetica")],
+      mutate(rename(table_locations$table13$data[,c("ID", "Dose", "Kinetica")],
                     Vss=Kinetica),
              Software="Kinetica version 5.0"),
-      mutate(rename(table.locations$table13$data[,c("ID", "Dose", "WinNonlin")],
+      mutate(rename(table_locations$table13$data[,c("ID", "Dose", "WinNonlin")],
                     Vss=WinNonlin),
              Software="WinNonlin version 5.3"))
-  table.locations$table13$data$ANALYTE <- "xanthohumol"
+  table_locations$table13$data$ANALYTE <- "xanthohumol"
   
-  tmpdata <- table.locations$table14$rawdata
+  tmpdata <- table_locations$table14$rawdata
   data.rows <- list(3:15, 3:19)
-  table.locations$table14$data <-
+  table_locations$table14$data <-
     rbind(
       cbind(data.frame(ID=as.numeric(tmpdata[data.rows[[1]],1]),
                        Dose=60),
-            split.column(tmpdata[data.rows[[1]],2])),
+            split_column(tmpdata[data.rows[[1]],2])),
       cbind(data.frame(ID=as.numeric(tmpdata[data.rows[[2]],1]),
                        Dose=180),
-            split.column(tmpdata[data.rows[[2]],3])))
-  names(table.locations$table14$data) <- c("ID", "Dose", "Kinetica", "WinNonlin")
-  table.locations$table14$data <-
+            split_column(tmpdata[data.rows[[2]],3])))
+  names(table_locations$table14$data) <- c("ID", "Dose", "Kinetica", "WinNonlin")
+  table_locations$table14$data <-
     rbind(
-      mutate(rename(table.locations$table14$data[,c("ID", "Dose", "Kinetica")],
+      mutate(rename(table_locations$table14$data[,c("ID", "Dose", "Kinetica")],
                     Vss=Kinetica),
              Software="Kinetica version 5.0"),
-      mutate(rename(table.locations$table14$data[,c("ID", "Dose", "WinNonlin")],
+      mutate(rename(table_locations$table14$data[,c("ID", "Dose", "WinNonlin")],
                     Vss=WinNonlin),
              Software="WinNonlin version 5.3"))
-  table.locations$table14$data$ANALYTE <- "isoxanthohumol"
+  table_locations$table14$data$ANALYTE <- "isoxanthohumol"
   
-  tmpdata <- table.locations$table20$rawdata
+  tmpdata <- table_locations$table20$rawdata
   data.rows <- list(4:22, 4:22)
-  table.locations$table20$data <-
+  table_locations$table20$data <-
     rbind(
       cbind(data.frame(ID=as.numeric(tmpdata[data.rows[[1]],1]),
                        ANALYTE="racemic lipoic acid"),
-            split.column(tmpdata[data.rows[[1]],2])),
+            split_column(tmpdata[data.rows[[1]],2])),
       cbind(data.frame(ID=as.numeric(tmpdata[data.rows[[2]],1]),
                        ANALYTE="r-lipoic acid"),
-            split.column(tmpdata[data.rows[[2]],3])))
-  names(table.locations$table20$data) <- c("ID", "ANALYTE", "Kinetica", "WinNonlin")
-  table.locations$table20$data <-
+            split_column(tmpdata[data.rows[[2]],3])))
+  names(table_locations$table20$data) <- c("ID", "ANALYTE", "Kinetica", "WinNonlin")
+  table_locations$table20$data <-
     rbind(
-      mutate(rename(table.locations$table20$data[,c("ID", "ANALYTE", "Kinetica")],
+      mutate(rename(table_locations$table20$data[,c("ID", "ANALYTE", "Kinetica")],
                     Vss=Kinetica),
              Software="Kinetica version 5.0"),
-      mutate(rename(table.locations$table20$data[,c("ID", "ANALYTE", "WinNonlin")],
+      mutate(rename(table_locations$table20$data[,c("ID", "ANALYTE", "WinNonlin")],
                     Vss=WinNonlin),
              Software="WinNonlin version 5.3"))
   
@@ -359,153 +365,154 @@ local({
   }
   
   ## Low dose xanthohumol
-  xanthohumol.low.conc <-
-    rbind(mutate(table.locations$table23$data,
+  xanthohumol_low_conc <-
+    rbind(mutate(table_locations$table23$data,
                  ANALYTE="xanthohumol"),
-          mutate(table.locations$table23$data,
+          mutate(table_locations$table23$data,
                  CONC=0, ## See the top of page 27
                  ANALYTE="isoxanthohumol"))
-  xanthohumol.low.demog <-
-    subset(table.locations$table21$data, dose %in% "Low")[,setdiff(names(table.locations$table21$data), "dose")]
-  xanthohumol.low.dose <- makedose(xanthohumol.low.conc, dose=20) # mg
+  xanthohumol_low_demog <-
+    subset(table_locations$table21$data, dose %in% "Low")[,setdiff(names(table_locations$table21$data), "dose")]
+  xanthohumol_low_dose <- makedose(xanthohumol_low_conc, dose=20) # mg
   
-  xanthohumol.low.nca <-
-    rbind(ncacleanup(table.locations$table1$data,
+  xanthohumol_low_nca <-
+    rbind(ncacleanup(table_locations$table1$data,
                      analyte="xanthohumol",
                      software="Kinetica version 5.0"),
-          ncacleanup(table.locations$table4$data,
+          ncacleanup(table_locations$table4$data,
                      analyte="xanthohumol",
                      software="WinNonlin version 5.3"))
   
-  xanthohumol.low.nca <-
-    merge(xanthohumol.low.nca,
-          table.locations$table13$data[table.locations$table13$data$Dose %in% 20,
-                                       setdiff(names(table.locations$table13$data), "Dose")])
-  xanthohumol.low.nca <- ncaupdate(xanthohumol.low.nca)
+  xanthohumol_low_nca <-
+    merge(xanthohumol_low_nca,
+          table_locations$table13$data[table_locations$table13$data$Dose %in% 20,
+                                       setdiff(names(table_locations$table13$data), "Dose")])
+  xanthohumol_low_nca <- ncaupdate(xanthohumol_low_nca)
   
   ## Medium dose xanthohumol
-  xanthohumol.medium.demog <-
-    subset(table.locations$table21$data, dose %in% "Medium")[,setdiff(names(table.locations$table21$data), "dose")]
-  xanthohumol.medium.conc <-
-    rbind(mutate(table.locations$table24$data,
+  xanthohumol_medium_demog <-
+    subset(table_locations$table21$data, dose %in% "Medium")[,setdiff(names(table_locations$table21$data), "dose")]
+  xanthohumol_medium_conc <-
+    rbind(mutate(table_locations$table24$data,
                  ANALYTE="xanthohumol"),
-          mutate(table.locations$table24$data,
+          mutate(table_locations$table24$data,
                  ANALYTE="isoxanthohumol"))
-  xanthohumol.medium.dose <- makedose(xanthohumol.medium.conc, dose=60)
+  xanthohumol_medium_dose <- makedose(xanthohumol_medium_conc, dose=60)
   
-  xanthohumol.medium.nca <-
+  xanthohumol_medium_nca <-
     bind_rows(
-      ncacleanup(table.locations$table2$data,
+      ncacleanup(table_locations$table2$data,
                  analyte="xanthohumol",
                  software="Kinetica version 5.0"),
-      ncacleanup(table.locations$table5$data,
+      ncacleanup(table_locations$table5$data,
                  analyte="xanthohumol",
                  software="WinNonlin version 5.3"),
-      ncacleanup(table.locations$table8$data,
+      ncacleanup(table_locations$table8$data,
                  analyte="isoxanthohumol",
                  software="Kinetica version 5.0"),
-      ncacleanup(table.locations$table10$data,
+      ncacleanup(table_locations$table10$data,
                  analyte="isoxanthohumol",
                  software="WinNonlin version 5.3"))
   
-  xanthohumol.medium.nca <-
-    merge(xanthohumol.medium.nca,
-          rbind(table.locations$table13$data[table.locations$table13$data$Dose %in% 60,
-                                             setdiff(names(table.locations$table13$data), "Dose")],
-                table.locations$table14$data[table.locations$table14$data$Dose %in% 60,
-                                             setdiff(names(table.locations$table14$data), "Dose")]))
-  xanthohumol.medium.nca <- ncaupdate(xanthohumol.medium.nca)
+  xanthohumol_medium_nca <-
+    merge(xanthohumol_medium_nca,
+          rbind(table_locations$table13$data[table_locations$table13$data$Dose %in% 60,
+                                             setdiff(names(table_locations$table13$data), "Dose")],
+                table_locations$table14$data[table_locations$table14$data$Dose %in% 60,
+                                             setdiff(names(table_locations$table14$data), "Dose")]))
+  xanthohumol_medium_nca <- ncaupdate(xanthohumol_medium_nca)
   
-  xanthohumol.high.demog <-
-    subset(table.locations$table21$data, dose %in% "High")[,setdiff(names(table.locations$table21$data), "dose")]
-  xanthohumol.high.conc <-
-    rbind(mutate(table.locations$table25$data,
+  xanthohumol_high_demog <-
+    subset(table_locations$table21$data, dose %in% "High")[,setdiff(names(table_locations$table21$data), "dose")]
+  xanthohumol_high_conc <-
+    rbind(mutate(table_locations$table25$data,
                  ANALYTE="xanthohumol"),
-          mutate(table.locations$table25$data,
+          mutate(table_locations$table25$data,
                  ANALYTE="isoxanthohumol"))
-  xanthohumol.high.dose <- makedose(xanthohumol.high.conc, dose=180)
+  xanthohumol_high_dose <- makedose(xanthohumol_high_conc, dose=180)
   
-  xanthohumol.high.nca <-
+  xanthohumol_high_nca <-
     bind_rows(
-      ncacleanup(table.locations$table3$data,
+      ncacleanup(table_locations$table3$data,
                  analyte="xanthohumol",
                  software="Kinetica version 5.0"),
-      ncacleanup(table.locations$table6$data,
+      ncacleanup(table_locations$table6$data,
                  analyte="xanthohumol",
                  software="WinNonlin version 5.3"),
-      ncacleanup(table.locations$table9$data,
+      ncacleanup(table_locations$table9$data,
                  analyte="isoxanthohumol",
                  software="Kinetica version 5.0"),
-      ncacleanup(table.locations$table11$data,
+      ncacleanup(table_locations$table11$data,
                  analyte="isoxanthohumol",
                  software="WinNonlin version 5.3"))
-  xanthohumol.high.nca <-
-    merge(xanthohumol.high.nca,
-          rbind(table.locations$table13$data[table.locations$table13$data$Dose %in% 180,
-                                             setdiff(names(table.locations$table13$data), "Dose")],
-                table.locations$table14$data[table.locations$table14$data$Dose %in% 180,
-                                             setdiff(names(table.locations$table14$data), "Dose")]))
-  xanthohumol.high.nca <- ncaupdate(xanthohumol.high.nca)
+  xanthohumol_high_nca <-
+    merge(xanthohumol_high_nca,
+          rbind(table_locations$table13$data[table_locations$table13$data$Dose %in% 180,
+                                             setdiff(names(table_locations$table13$data), "Dose")],
+                table_locations$table14$data[table_locations$table14$data$Dose %in% 180,
+                                             setdiff(names(table_locations$table14$data), "Dose")]))
+  xanthohumol_high_nca <- ncaupdate(xanthohumol_high_nca)
   
-  lipoic.acid.demog <- table.locations$table22$data
-  lipoic.acid.conc <-
-    rbind(mutate(table.locations$table28$data,
+  lipoic.acid_demog <- table_locations$table22$data
+  lipoic.acid_conc <-
+    rbind(mutate(table_locations$table28$data,
                  ANALYTE="racemic lipoic acid",
                  Period=1),
-          mutate(table.locations$table29$data,
+          mutate(table_locations$table29$data,
                  ANALYTE="r-lipoic acid",
                  Period=2))
-  lipoic.acid.dose <-
-    mutate(unique(lipoic.acid.conc[,c("ID", "Period", "ANALYTE")]),
+  lipoic.acid_dose <-
+    mutate(unique(lipoic.acid_conc[,c("ID", "Period", "ANALYTE")]),
            TIME=0,
            DOSE=500,
            ROUTE="oral")
   lipoic.acid.nca <-
     bind_rows(
-      mutate(ncacleanup(table.locations$table15$data,
+      mutate(ncacleanup(table_locations$table15$data,
                         analyte="racemic lipoic acid",
                         software="Kinetica version 5.0"),
              Period=1),
-      mutate(ncacleanup(table.locations$table16$data,
+      mutate(ncacleanup(table_locations$table16$data,
                         analyte="r-lipoic acid",
                         software="Kinetica version 5.0"),
              Period=2),
-      mutate(ncacleanup(table.locations$table17$data,
+      mutate(ncacleanup(table_locations$table17$data,
                         analyte="racemic lipoic acid",
                         software="WinNonlin version 5.3"),
              Period=1),
-      mutate(ncacleanup(table.locations$table18$data,
+      mutate(ncacleanup(table_locations$table18$data,
                         analyte="r-lipoic acid",
                         software="WinNonlin version 5.3"),
              Period=2))
-  lipoic.acid.nca <- merge(lipoic.acid.nca, table.locations$table20$data)
+  lipoic.acid.nca <- merge(lipoic.acid.nca, table_locations$table20$data)
   lipoic.acid.nca <- ncaupdate(lipoic.acid.nca)
   
   
-  xanthohumol.demog <- bind_rows(mutate(xanthohumol.low.demog, ID=paste0("L", ID)),
-                                 mutate(xanthohumol.medium.demog, ID=paste0("M", ID)),
-                                 mutate(xanthohumol.high.demog, ID=paste0("H", ID)))
-  xanthohumol.dose <- bind_rows(mutate(xanthohumol.low.dose, ID=paste0("L", ID)),
-                                mutate(xanthohumol.medium.dose, ID=paste0("M", ID)),
-                                mutate(xanthohumol.high.dose, ID=paste0("H", ID)))
-  xanthohumol.conc <- bind_rows(mutate(xanthohumol.low.conc, ID=paste0("L", ID)),
-                                mutate(xanthohumol.medium.conc, ID=paste0("M", ID)),
-                                mutate(xanthohumol.high.conc, ID=paste0("H", ID)))
-  xanthohumol.nca <- bind_rows(mutate(xanthohumol.low.nca, ID=paste0("L", ID)),
-                               mutate(xanthohumol.medium.nca, ID=paste0("M", ID)),
-                               mutate(xanthohumol.high.nca, ID=paste0("H", ID)))
+  xanthohumol_demog <- bind_rows(mutate(xanthohumol_low_demog, ID=paste0("L", ID)),
+                                 mutate(xanthohumol_medium_demog, ID=paste0("M", ID)),
+                                 mutate(xanthohumol_high_demog, ID=paste0("H", ID)))
+  xanthohumol_dose <- bind_rows(mutate(xanthohumol_low_dose, ID=paste0("L", ID)),
+                                mutate(xanthohumol_medium_dose, ID=paste0("M", ID)),
+                                mutate(xanthohumol_high_dose, ID=paste0("H", ID)))
+  xanthohumol_conc <- bind_rows(mutate(xanthohumol_low_conc, ID=paste0("L", ID)),
+                                mutate(xanthohumol_medium_conc, ID=paste0("M", ID)),
+                                mutate(xanthohumol_high_conc, ID=paste0("H", ID)))
+  xanthohumol.nca <- bind_rows(mutate(xanthohumol_low_nca, ID=paste0("L", ID)),
+                               mutate(xanthohumol_medium_nca, ID=paste0("M", ID)),
+                               mutate(xanthohumol_high_nca, ID=paste0("H", ID)))
 
   ## Write out the data
-  devtools::use_data(xanthohumol.demog,
-                     xanthohumol.dose,
-                     xanthohumol.conc,
-                     xanthohumol.nca,
-                     
-                     lipoic.acid.demog,
-                     lipoic.acid.dose,
-                     lipoic.acid.conc,
-                     lipoic.acid.nca,
-                     
-                     pkg=".",
-                     overwrite=TRUE)
+  usethis::use_data(
+    xanthohumol_demog,
+    xanthohumol_dose,
+    xanthohumol_conc,
+    xanthohumol.nca,
+    
+    lipoic.acid_demog,
+    lipoic.acid_dose,
+    lipoic.acid_conc,
+    lipoic.acid.nca,
+
+    overwrite=TRUE
+  )
 })
