@@ -2,30 +2,30 @@
 #' 
 #' Simulated data set of concentration-time data for hydrocortisone.
 #' 
-#' @format A data frame with three variables:
+#' @format \code{hydrocortisone.sim.conc} is a data frame with three variables:
 #' \describe{
 #'   \item{\code{ID}}{Subject identifier}
 #'   \item{\code{TIME}}{Time (in hours)}
 #'   \item{\code{CONC}}{Plasma concentration of hydrocortisone (in ng/mL)}
 #' }
-#' @seealso \code{\link{hydrocortisone.sim.dose}}
 #' 
-#' @references
-#' Derendorf H, Mollmann H, Barth J, Mollmann C, Tunn S, Krieg M.
-#' Pharmacokinetics and oral bioavailability of hydrocortisone. J Clin
-#' Pharmacol. 1991;31(5):473-6.
-"hydrocortisone.sim.conc"
-
-#' Dosing of hydrocortisone
-#' 
-#' Simulated data set of dosing data for hydrocortisone.
-#' 
-#' @format A data frame with three variables:
+#' @format \code{hydrocortisone.sim.dose} is a data frame describing dosing with three variables:
 #' \describe{
 #'   \item{\code{ID}}{Subject identifier}
 #'   \item{\code{TIME}}{Time (in hours)}
 #'   \item{\code{DOSE}}{Dose of hydrocortisone (in mg)}
 #'   \item{\code{ROUTE}}{Route of administration}
 #' }
-#' @seealso \code{\link{hydrocortisone.sim.conc}}
+#' 
+#' @name hydrocortisone
+#' @references
+#' Derendorf H, Mollmann H, Barth J, Mollmann C, Tunn S, Krieg M.
+#' Pharmacokinetics and oral bioavailability of hydrocortisone. J Clin
+#' Pharmacol. 1991;31(5):473-6.
+NULL
+
+#' @rdname hydrocortisone
+"hydrocortisone.sim.conc"
+
+#' @rdname hydrocortisone
 "hydrocortisone.sim.dose"
