@@ -3,19 +3,21 @@
 \docType{data}
 \name{hydrocortisone}
 \alias{hydrocortisone}
-\alias{hydrocortisone.sim.conc}
-\alias{hydrocortisone.sim.dose}
+\alias{hydrocortisone_sim_dose}
+\alias{hydrocortisone_sim_conc}
 \title{Pharmacokinetics of hydrocortisone}
-\format{\code{hydrocortisone.sim.conc} is a data frame with three variables:
+\format{\code{hydrocortisone_sim_conc} is a data frame descrbing
+  concentration-time with the following variables:
 \describe{
   \item{\code{ID}}{Subject identifier}
   \item{\code{TIME}}{Time (in hours)}
   \item{\code{CONC}}{Plasma concentration of hydrocortisone (in ng/mL)}
+  \item{\code{CONCU}}{Units for plasma concentration of hydrocortisone, "ng/mL"}
 }}
 \usage{
-hydrocortisone.sim.conc
+hydrocortisone_sim_dose
 
-hydrocortisone.sim.dose
+hydrocortisone_sim_conc
 }
 \description{
 Simulated data set of concentration-time data for hydrocortisone.

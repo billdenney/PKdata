@@ -2,18 +2,23 @@
 #' 
 #' Simulated data set of concentration-time data for hydrocortisone.
 #' 
-#' @format \code{hydrocortisone.sim.conc} is a data frame with three variables:
+#' @format \code{hydrocortisone_sim_conc} is a data frame descrbing
+#'   concentration-time with the following variables:
 #' \describe{
 #'   \item{\code{ID}}{Subject identifier}
 #'   \item{\code{TIME}}{Time (in hours)}
 #'   \item{\code{CONC}}{Plasma concentration of hydrocortisone (in ng/mL)}
+#'   \item{\code{CONCU}}{Units for plasma concentration of hydrocortisone, "ng/mL"}
 #' }
 #' 
-#' @format \code{hydrocortisone.sim.dose} is a data frame describing dosing with three variables:
+#' @format \code{hydrocortisone_sim_dose} is a data frame describing dosing with
+#'   the following variables:
 #' \describe{
 #'   \item{\code{ID}}{Subject identifier}
 #'   \item{\code{TIME}}{Time (in hours)}
+#'   \item{\code{TIMEU}}{Units for time, "hours"}
 #'   \item{\code{DOSE}}{Dose of hydrocortisone (in mg)}
+#'   \item{\code{DOSEU}}{Units for dose of hydrocortisone, "mg"}
 #'   \item{\code{ROUTE}}{Route of administration}
 #' }
 #' 
@@ -25,7 +30,7 @@
 NULL
 
 #' @rdname hydrocortisone
-"hydrocortisone.sim.conc"
+"hydrocortisone_sim_dose"
 
 #' @rdname hydrocortisone
-"hydrocortisone.sim.dose"
+"hydrocortisone_sim_conc"

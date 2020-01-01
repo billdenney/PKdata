@@ -12,23 +12,28 @@ local({
   hydrocortisone.sim$ID <- factor(hydrocortisone.sim$ID)
 
   # Update the concentration data
-  hydrocortisone.sim.dose <-
+  hydrocortisone_sim_dose <-
     hydrocortisone.sim[hydrocortisone.sim$AMT > 0,
                        setdiff(names(hydrocortisone.sim), "DV")]
   # Unit conversion from ug to mg and standardize naming
-  hydrocortisone.sim.dose$DOSE <- hydrocortisone.sim.dose$AMT/1000
-  hydrocortisone.sim.dose$AMT <- NULL
-  hydrocortisone.sim.dose$ROUTE <- "Oral"
+  hydrocortisone_sim_dose$DOSE <- hydrocortisone_sim_dose$AMT/1000
+  hydrocortisone_sim_dose$DOSEU <- "mg"
+  hydrocortisone_sim_dose$TIMEU <- "hours"
+  hydrocortisone_sim_dose$AMT <- NULL
+  hydrocortisone_sim_dose$ROUTE <- "Oral"
 
   # Update the concentration data
-  hydrocortisone.sim.conc <-
+  hydrocortisone_sim_conc <-
     hydrocortisone.sim[,setdiff(names(hydrocortisone.sim), "AMT")]
   # Standardize naming of the concentration variables
-  names(hydrocortisone.sim.conc)[names(hydrocortisone.sim.conc) %in% "DV"] <- "CONC"
-  
+  names(hydrocortisone_sim_conc)[names(hydrocortisone_sim_conc) %in% "DV"] <- "CONC"
+  hydrocortisone_sim_conc$TIMEU <- "hours"
+  hydrocortisone_sim_conc$CONCU <- "ng/mL"
+
   # Save the data
-  devtools::use_data(hydrocortisone.sim.conc,
-                     hydrocortisone.sim.dose,
-                     pkg=".",
-                     overwrite=TRUE)
+  usethis::use_data(
+    hydrocortisone_sim_conc,
+    hydrocortisone_sim_dose,
+    overwrite=TRUE
+  )
 })
