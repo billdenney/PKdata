@@ -6,7 +6,8 @@
 \alias{Holder_1999_conc}
 \alias{Holder_1999_dose}
 \alias{Holder_1999_demog}
-\title{Pharmacokinetics of an experimental compound reported in Holder 1999}
+\title{Pharmacokinetics of an experimental compound reported in Table 4 of Holder
+1999}
 \format{
 \code{Holder_1999_conc} is a data frame describing concentration by time with the following variables:
 \describe{
