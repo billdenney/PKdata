@@ -4,13 +4,15 @@
 \name{xanthohumol.conc}
 \alias{xanthohumol.conc}
 \title{Pharmacokinetics of xanthohumol and isoxanthohumol}
-\format{A data frame with four variables:
+\format{
+A data frame with four variables:
 \describe{
   \item{\code{ID}}{Subject identifier}
   \item{\code{TIME}}{Time (in hours)}
   \item{\code{CONC}}{Plasma concentration of the analyte (in ug/L)}
   \item{\code{ANALYTE}}{The name of the analyte measured in the concentration column}
-}}
+}
+}
 \source{
 https://ir.library.oregonstate.edu/xmlui/bitstream/handle/1957/39168/KarnprachaChanida2013.pdf?sequence=1
 }

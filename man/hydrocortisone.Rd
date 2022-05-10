@@ -6,14 +6,31 @@
 \alias{hydrocortisone_sim_dose}
 \alias{hydrocortisone_sim_conc}
 \title{Pharmacokinetics of hydrocortisone}
-\format{\code{hydrocortisone_sim_conc} is a data frame descrbing
+\format{
+\code{hydrocortisone_sim_conc} is a data frame descrbing
   concentration-time with the following variables:
 \describe{
   \item{\code{ID}}{Subject identifier}
   \item{\code{TIME}}{Time (in hours)}
   \item{\code{CONC}}{Plasma concentration of hydrocortisone (in ng/mL)}
   \item{\code{CONCU}}{Units for plasma concentration of hydrocortisone, "ng/mL"}
-}}
+}
+
+\code{hydrocortisone_sim_dose} is a data frame describing dosing with
+  the following variables:
+\describe{
+  \item{\code{ID}}{Subject identifier}
+  \item{\code{TIME}}{Time (in hours)}
+  \item{\code{TIMEU}}{Units for time, "hours"}
+  \item{\code{DOSE}}{Dose of hydrocortisone (in mg)}
+  \item{\code{DOSEU}}{Units for dose of hydrocortisone, "mg"}
+  \item{\code{ROUTE}}{Route of administration}
+}
+
+An object of class \code{data.frame} with 20 rows and 6 columns.
+
+An object of class \code{data.frame} with 280 rows and 5 columns.
+}
 \usage{
 hydrocortisone_sim_dose
 

@@ -4,14 +4,16 @@
 \name{lipoic.acid.conc}
 \alias{lipoic.acid.conc}
 \title{Pharmacokinetics of racemic and r-lipoic acid}
-\format{A data frame with four variables:
+\format{
+A data frame with four variables:
 \describe{
   \item{\code{ID}}{Subject identifier}
   \item{\code{TIME}}{Time (in minutes)}
   \item{\code{CONC}}{Plasma concentration of the analyte (in ng/mL)}
   \item{\code{ANALYTE}}{The name of the analyte measured in the concentration column}
   \item{\code{Period}}{The period number}
-}}
+}
+}
 \source{
 https://ir.library.oregonstate.edu/xmlui/bitstream/handle/1957/39168/KarnprachaChanida2013.pdf?sequence=1
 }

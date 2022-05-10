@@ -5,14 +5,16 @@
 \alias{lipoic.acid.nca}
 \title{Noncompartmental analysis (NCA) parameters for racemic and r-lipoic acid as
 calculated by Kinetica and WinNonlin.}
-\format{A data frame with five variables:
+\format{
+A data frame with five variables:
 \describe{
   \item{\code{ID}}{Subject identifier}
   \item{\code{ANALYTE}}{The name of the analyte measured in the \code{Value} column}
   \item{\code{Parameter}}{NCA parameter name}
   \item{\code{Software}}{Name and version of software used for NCA calculation}
   \item{\code{Value}}{Value of the NCA parameter}
-}}
+}
+}
 \source{
 https://ir.library.oregonstate.edu/xmlui/bitstream/handle/1957/39168/KarnprachaChanida2013.pdf?sequence=1
 }

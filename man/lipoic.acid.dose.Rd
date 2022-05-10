@@ -4,7 +4,8 @@
 \name{lipoic.acid.dose}
 \alias{lipoic.acid.dose}
 \title{Dosing of racemic and r-lipoic acid}
-\format{A data frame with six variables:
+\format{
+A data frame with six variables:
 \describe{
   \item{\code{ID}}{Subject identifier}
   \item{\code{Period}}{The period number}
@@ -12,7 +13,8 @@
   \item{\code{TIME}}{Time (in hours)}
   \item{\code{DOSE}}{Dose of lipoic acid (in mg)}
   \item{\code{ROUTE}}{Route of administration}
-}}
+}
+}
 \source{
 https://ir.library.oregonstate.edu/xmlui/bitstream/handle/1957/39168/KarnprachaChanida2013.pdf?sequence=1
 }

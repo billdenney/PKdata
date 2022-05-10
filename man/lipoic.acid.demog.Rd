@@ -4,12 +4,14 @@
 \name{lipoic.acid.demog}
 \alias{lipoic.acid.demog}
 \title{Demographics for subjects dosed with xanthohumol}
-\format{A data frame with two variables:
+\format{
+A data frame with two variables:
 \describe{
   \item{\code{ID}}{Subject identifier}
   \item{\code{Sex}}{The subject's sex (F=female, M=male)}
   \item{\code{Age}}{The subject's age category}
-}}
+}
+}
 \source{
 https://ir.library.oregonstate.edu/xmlui/bitstream/handle/1957/39168/KarnprachaChanida2013.pdf?sequence=1
 }

@@ -7,7 +7,8 @@
 \alias{TC20160506_dose}
 \alias{TC20160506_demog}
 \title{Pharmacokinetics of TC20160506 (Note that TC20160506 is a de-identified name for the drug.)}
-\format{\code{TC20160506_conc} is concentration-time data.  The data.frame
+\format{
+\code{TC20160506_conc} is concentration-time data.  The data.frame
   has the following variables:
 \describe{
   \item{\code{ID}}{Subject identifier}
@@ -16,7 +17,39 @@
   \item{\code{TIMEU}}{Units for time, "hours"}
   \item{\code{CONC}}{Plasma concentration of TC20160506 (in ug/L)}
   \item{\code{CONCU}}{Units for plasma concentration of TC20160506, "ug/L"}
-}}
+}
+
+\code{TC20160506_dose} is dosing data for TC20160506.  The data.frame
+  has the following variables:
+\describe{
+  \item{\code{ID}}{Subject identifier}
+  \item{\code{ANALYTE}}{Analyte being dosed (the drug name)}
+  \item{\code{TIME}}{Time since first dose on \code{DAY} 1 (in
+    hours)}
+  \item{\code{TIMEU}}{Units for time, "hours"}
+  \item{\code{DOSE}}{Dose of TC20160506 (in ug).  Note that there
+    may be more than one dose record per subject.}
+  \item{\code{DOSEU}}{Units for dose, "ug"}
+  \item{\code{ROUTE}}{Route of administration}
+}
+
+\code{TC20160506_demog} is demographic data for TC20160506
+  pharmacokinetics.  The data.frame has the following variables:
+\describe{
+  \item{\code{ID}}{Subject identifier}
+  \item{\code{AGE}}{Subject's age (in years)}
+  \item{\code{AGEU}}{Units for age, "years"}
+  \item{\code{SEX}}{Subject's sex (Male/Female)}
+  \item{\code{WEIGHT}}{Subject's body weight (in kg)}
+  \item{\code{WEIGHTU}}{Units for body weight, "kg"}
+}
+
+An object of class \code{data.frame} with 1494 rows and 6 columns.
+
+An object of class \code{data.frame} with 209 rows and 7 columns.
+
+An object of class \code{data.frame} with 42 rows and 6 columns.
+}
 \usage{
 TC20160506_conc
 

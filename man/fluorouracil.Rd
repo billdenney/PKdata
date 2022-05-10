@@ -7,7 +7,8 @@
 \alias{fluorouracil_dose}
 \alias{fluorouracil_demog}
 \title{Pharmacokinetics of fluorouracil}
-\format{\code{fluorouracil_conc} is a data frame describing concentration by time with the following variables:
+\format{
+\code{fluorouracil_conc} is a data frame describing concentration by time with the following variables:
 \describe{
   \item{\code{ID}}{Subject identifier}
   \item{\code{TIME}}{Time (in minutes)}
@@ -16,7 +17,25 @@
   \item{\code{NDOSEU}}{Units for nominal dose, "mg/kg"}
   \item{\code{CONC}}{Plasma concentration of fluorouracil (in ug/mL)}
   \item{\code{CONCU}}{Units for plasma concentration of fluorouracil, "ug/mL"}
-}}
+}
+
+\code{fluorouracil_dose} is a data frame describing dosing with the following variables:
+\describe{
+  \item{\code{ID}}{Subject identifier}
+  \item{\code{NDOSE}}{Nominal dose (in mg/kg)}
+  \item{\code{NDOSEU}}{Units for nominal dose, "mg/kg"}
+  \item{\code{TIME}}{Time for start of dose (in minutes)}
+  \item{\code{TIME_END}}{Time for end of dose (in minutes)}
+  \item{\code{TIMEU}}{Units for time, "minutes"}
+  \item{\code{ROUTE}}{Route of administration, "intravenous bolus"}
+}
+
+An object of class \code{data.frame} with 48 rows and 7 columns.
+
+An object of class \code{data.frame} with 8 rows and 7 columns.
+
+An object of class \code{data.frame} with 8 rows and 17 columns.
+}
 \usage{
 fluorouracil_conc
 

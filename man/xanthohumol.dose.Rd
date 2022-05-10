@@ -4,13 +4,15 @@
 \name{xanthohumol.dose}
 \alias{xanthohumol.dose}
 \title{Dosing of xanthohumol}
-\format{A data frame with four variables:
+\format{
+A data frame with four variables:
 \describe{
   \item{\code{ID}}{Subject identifier}
   \item{\code{TIME}}{Time (in hours)}
   \item{\code{DOSE}}{Dose of xanthohumol (in mg)}
   \item{\code{ROUTE}}{Route of administration}
-}}
+}
+}
 \source{
 https://ir.library.oregonstate.edu/xmlui/bitstream/handle/1957/39168/KarnprachaChanida2013.pdf?sequence=1
 }

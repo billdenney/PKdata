@@ -7,7 +7,8 @@
 \alias{KI20160914_dose}
 \alias{KI20160914_demog}
 \title{Pharmacokinetics of KI20160914 (Note that KI20160914 is a de-identified name for the drug.)}
-\format{\code{KI20160914_conc} is concentration-time data for KI20160914. The
+\format{
+\code{KI20160914_conc} is concentration-time data for KI20160914. The
   data.frame has the following variables:
 \describe{
   \item{\code{ID}}{Subject identifier}
@@ -17,7 +18,37 @@
   \item{\code{DAY}}{Study day (since the beginning of \code{PERIOD} 1}
   \item{\code{CONC}}{Plasma concentration of KI20160914}
   \item{\code{FORMULATION}}{Formulation number}
-}}
+}
+
+\code{KI20160914_dose} is dosing data.  The data.frame has the
+  following variables:
+\describe{
+  \item{\code{ID}}{Subject identifier}
+  \item{\code{PERIOD}}{Period number for different visits in the study}
+  \item{\code{TIME}}{Nominal time since first dose on \code{DAY} 1 in the current \code{PERIOD} (in hours)}
+  \item{\code{TIME_FIRST_DOSE}}{Nominal time since first dose in \code{PERIOD} 1 (in hours)}
+  \item{\code{TIMEU}}{Units for time, "hours"}
+  \item{\code{DAY}}{Study day (since the beginning of \code{PERIOD} 1}
+  \item{\code{DOSE}}{Dose of KI20160914 (in mg).}
+  \item{\code{FORMULATION}}{Formulation number}
+  \item{\code{ROUTE}}{Route of administration}
+}
+
+\code{KI20160914_demog} is demographic data for KI20160914
+  pharmacokinetics.  The data.frame has the following variables:
+\describe{
+  \item{\code{ID}}{Subject identifier}
+  \item{\code{AGE}}{Subject's age (in years)}
+  \item{\code{SEX}}{Subject's sex (Male/Female)}
+  \item{\code{WEIGHT}}{Subject's body weight (in kg)}
+}
+
+An object of class \code{data.frame} with 4904 rows and 7 columns.
+
+An object of class \code{data.frame} with 317 rows and 9 columns.
+
+An object of class \code{data.frame} with 159 rows and 6 columns.
+}
 \usage{
 KI20160914_conc
 

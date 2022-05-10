@@ -4,11 +4,13 @@
 \name{xanthohumol.demog}
 \alias{xanthohumol.demog}
 \title{Demographics for subjects dosed with xanthohumol}
-\format{A data frame with two variables:
+\format{
+A data frame with two variables:
 \describe{
   \item{\code{ID}}{Subject identifier}
   \item{\code{Sex}}{The subject's sex (F=female, M=male)}
-}}
+}
+}
 \usage{
 xanthohumol.demog
 }
