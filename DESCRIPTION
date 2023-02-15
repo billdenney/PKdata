@@ -26,4 +26,4 @@ NeedsCompilation: no
 URL: https://github.com/billdenney/PKdata
 BugReports: https://github.com/billdenney/PKdata/issues
 LazyData: true
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.3

@@ -1,8 +1,6 @@
-#' Pharmacokinetics of xanthohumol and isoxanthohumol
-#' 
 #' Data set of concentration-time data for xanthohumol and isoxanthohumol (a
 #' metabolite of xanthohumol).
-#' 
+#'
 #' @format A data frame with four variables:
 #' \describe{
 #'   \item{\code{ID}}{Subject identifier}
@@ -10,18 +8,16 @@
 #'   \item{\code{CONC}}{Plasma concentration of the analyte (in ug/L)}
 #'   \item{\code{ANALYTE}}{The name of the analyte measured in the concentration column}
 #' }
+#'
 #' @family xanthohumol and isoxanthohumol concentration and NCA data
-#' @seealso \code{\link{xanthohumol.dose}}, \code{\link{xanthohumol.dose}},
-#'   \code{\link{xanthohumol.nca}}
-#' 
 #' @references
 #' Karnpracha, Chanida. (2013) Comparison of Pharmacokinetic Data Analysis with
 #' Two Competing Pharmacokinetic Software Program. (Master's Thesis)
 #' @source https://ir.library.oregonstate.edu/xmlui/bitstream/handle/1957/39168/KarnprachaChanida2013.pdf?sequence=1
-"xanthohumol.conc"
+"xanthohumol_conc"
 
 #' Dosing of xanthohumol
-#' 
+#'
 #' @format A data frame with four variables:
 #' \describe{
 #'   \item{\code{ID}}{Subject identifier}
@@ -30,15 +26,16 @@
 #'   \item{\code{ROUTE}}{Route of administration}
 #' }
 #'
+#' @family xanthohumol and isoxanthohumol concentration and NCA data
 #' @references
 #' Karnpracha, Chanida. (2013) Comparison of Pharmacokinetic Data Analysis with
 #' Two Competing Pharmacokinetic Software Program. (Master's Thesis)
 #' @source https://ir.library.oregonstate.edu/xmlui/bitstream/handle/1957/39168/KarnprachaChanida2013.pdf?sequence=1
-"xanthohumol.dose"
+"xanthohumol_dose"
 
 #' Noncompartmental analysis (NCA) parameters for xanthohumol and isoxanthohumol
 #' as calculated by Kinetica and WinNonlin.
-#' 
+#'
 #' @format A data frame with five variables:
 #' \describe{
 #'   \item{\code{ID}}{Subject identifier}
@@ -48,25 +45,26 @@
 #'   \item{\code{Value}}{Value of the NCA parameter}
 #' }
 #'
+#' @family xanthohumol and isoxanthohumol concentration and NCA data
 #' @references
 #' Karnpracha, Chanida. (2013) Comparison of Pharmacokinetic Data Analysis with
 #' Two Competing Pharmacokinetic Software Program. (Master's Thesis)
 #' @source https://ir.library.oregonstate.edu/xmlui/bitstream/handle/1957/39168/KarnprachaChanida2013.pdf?sequence=1
-"xanthohumol.nca"
+"xanthohumol_nca"
 
 #' Demographics for subjects dosed with xanthohumol
-#' 
+#'
 #' @format A data frame with two variables:
 #' \describe{
 #'   \item{\code{ID}}{Subject identifier}
 #'   \item{\code{Sex}}{The subject's sex (F=female, M=male)}
 #' }
-"xanthohumol.demog"
+"xanthohumol_demog"
 
 #' Pharmacokinetics of racemic and r-lipoic acid
-#' 
+#'
 #' Data set of concentration-time data for racemic and r-lipoic acid.
-#' 
+#'
 #' @format A data frame with four variables:
 #' \describe{
 #'   \item{\code{ID}}{Subject identifier}
@@ -75,17 +73,15 @@
 #'   \item{\code{ANALYTE}}{The name of the analyte measured in the concentration column}
 #'   \item{\code{Period}}{The period number}
 #' }
-#' @seealso \code{\link{lipoic.acid.dose}}, \code{\link{lipoic.acid.nca}},
-#'   \code{\link{lipoic.acid.demog}}
-#' 
+#' @family lipoic acid concentration and NCA data
 #' @references
 #' Karnpracha, Chanida. (2013) Comparison of Pharmacokinetic Data Analysis with
 #' Two Competing Pharmacokinetic Software Program. (Master's Thesis)
 #' @source https://ir.library.oregonstate.edu/xmlui/bitstream/handle/1957/39168/KarnprachaChanida2013.pdf?sequence=1
-"lipoic.acid.conc"
+"lipoic_acid_conc"
 
 #' Dosing of racemic and r-lipoic acid
-#' 
+#'
 #' @format A data frame with six variables:
 #' \describe{
 #'   \item{\code{ID}}{Subject identifier}
@@ -95,18 +91,17 @@
 #'   \item{\code{DOSE}}{Dose of lipoic acid (in mg)}
 #'   \item{\code{ROUTE}}{Route of administration}
 #' }
-#' @seealso \code{\link{lipoic.acid.conc}}, \code{\link{lipoic.acid.nca}},
-#'   \code{\link{lipoic.acid.demog}}
 #'
+#' @family lipoic acid concentration and NCA data
 #' @references
 #' Karnpracha, Chanida. (2013) Comparison of Pharmacokinetic Data Analysis with
 #' Two Competing Pharmacokinetic Software Program. (Master's Thesis)
 #' @source https://ir.library.oregonstate.edu/xmlui/bitstream/handle/1957/39168/KarnprachaChanida2013.pdf?sequence=1
-"lipoic.acid.dose"
+"lipoic_acid_dose"
 
 #' Noncompartmental analysis (NCA) parameters for racemic and r-lipoic acid as
 #' calculated by Kinetica and WinNonlin.
-#' 
+#'
 #' @format A data frame with five variables:
 #' \describe{
 #'   \item{\code{ID}}{Subject identifier}
@@ -116,28 +111,25 @@
 #'   \item{\code{Value}}{Value of the NCA parameter}
 #' }
 #'
-#' @seealso  \code{\link{lipoic.acid.dose}}, \code{\link{lipoic.acid.conc}},
-#'   \code{\link{lipoic.acid.demog}}
-#'
+#' @family lipoic acid concentration and NCA data
 #' @references
 #' Karnpracha, Chanida. (2013) Comparison of Pharmacokinetic Data Analysis with
 #' Two Competing Pharmacokinetic Software Program. (Master's Thesis)
 #' @source https://ir.library.oregonstate.edu/xmlui/bitstream/handle/1957/39168/KarnprachaChanida2013.pdf?sequence=1
-"lipoic.acid.nca"
+"lipoic_acid_nca"
 
-#' Demographics for subjects dosed with xanthohumol
-#' 
+#' Demographics for subjects dosed with r-lipoic acid
+#'
 #' @format A data frame with two variables:
 #' \describe{
 #'   \item{\code{ID}}{Subject identifier}
 #'   \item{\code{Sex}}{The subject's sex (F=female, M=male)}
 #'   \item{\code{Age}}{The subject's age category}
 #' }
-#' @seealso  \code{\link{lipoic.acid.dose}}, \code{\link{lipoic.acid.conc}},
-#'   \code{\link{lipoic.acid.nca}}
 #'
+#' @family lipoic acid concentration and NCA data
 #' @references
 #' Karnpracha, Chanida. (2013) Comparison of Pharmacokinetic Data Analysis with
 #' Two Competing Pharmacokinetic Software Program. (Master's Thesis)
 #' @source https://ir.library.oregonstate.edu/xmlui/bitstream/handle/1957/39168/KarnprachaChanida2013.pdf?sequence=1
-"lipoic.acid.demog"
+"lipoic_acid_demog"
