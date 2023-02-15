@@ -1,3 +1,7 @@
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/billdenney/PKdata/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/billdenney/PKdata/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
+
 # PKdata
 
 Pharmacokinetic data for testing software with real and statically

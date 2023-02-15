@@ -23,7 +23,8 @@ Suggests:
 License: GPL-3
 Encoding: UTF-8
 NeedsCompilation: no
-URL: https://github.com/billdenney/PKdata
+URL: https://github.com/billdenney/PKdata,
+    https://billdenney.github.io/PKdata/
 BugReports: https://github.com/billdenney/PKdata/issues
 LazyData: true
 RoxygenNote: 7.2.3
